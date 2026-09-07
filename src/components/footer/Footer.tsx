@@ -25,7 +25,7 @@ const quickLinks = {
 
 const socials = [
   { icon: Twitter,   href: '#', label: 'Twitter'   },
-  { icon: Linkedin,  href: '#', label: 'LinkedIn'  },
+  { icon: Linkedin,  href: 'https://www.linkedin.com/in/amk-ads-761791434/?isSelfProfile=true', label: 'LinkedIn'  },
   { icon: Instagram, href: '#', label: 'Instagram' },
   { icon: Facebook,  href: '#', label: 'Facebook'  },
   { icon: Youtube,   href: '#', label: 'YouTube'   },
@@ -108,6 +108,8 @@ export default function Footer() {
                 <a
                   key={label}
                   href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="w-9 h-9 rounded-lg border border-slate-300 text-slate-700 hover:border-brand-orange hover:text-brand-orangeHover bg-white flex items-center justify-center transition-all duration-200 shadow-sm"
                 >
