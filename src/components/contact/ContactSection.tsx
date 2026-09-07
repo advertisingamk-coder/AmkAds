@@ -38,7 +38,7 @@ export default function ContactSection() {
     setLoading(true)
 
     try {
-      const endpoint = '/api/contact'
+      const endpoint = `${process.env.NEXT_PUBLIC_API_URL || ""}/api/contact`
 
       const response = await fetch(endpoint, {
         method: 'POST',

@@ -17,7 +17,7 @@ const app = new Hono<{ Bindings: Bindings }>()
 
 // CORS Middleware
 app.use('*', cors({
-  origin: ['https://ed25e133.amkads-bmd.pages.dev', 'http://localhost:3000'],
+  origin: (origin) => origin || '*',
   credentials: true,
   allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
 }))
