@@ -1,6 +1,6 @@
-name = "amkads-api"
+name = "amkads"
 main = "src/index.ts"
-account_id = "4aeb83503aab6909c6041a8d79a7d791"
+account_id = "7fb87506eb8060cc8da12e044c15a6fb"
 compatibility_date = "2024-01-01"
 
 [placement]
