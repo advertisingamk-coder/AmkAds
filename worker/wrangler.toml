@@ -9,7 +9,7 @@ mode = "smart"
 [[d1_databases]]
 binding = "DB"
 database_name = "amkads-portfolio"
-database_id = "3f516c4b-9a23-4048-b1f8-e9ce2e2f6962"
+database_id = "e1a91113-bcdd-4dca-95ce-69973c9c9625"
 
 [[r2_buckets]]
 binding = "MEDIA_BUCKET"
