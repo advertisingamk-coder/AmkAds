@@ -51,7 +51,7 @@ app.post('/api/contact', async (c) => {
     const body = await c.req.json()
     const { name, email, company, service, message } = body
 
-    const receiverEmail = c.env.CONTACT_RECEIVER_EMAIL || 'amk.ads2020@gmail.com'
+    const receiverEmail = c.env.CONTACT_RECEIVER_EMAIL || 'advertisingamk@gmail.com'
 
     const htmlBody = `
       <h2>New Website Contact Form Submission</h2>
