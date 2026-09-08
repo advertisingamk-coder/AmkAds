@@ -31,17 +31,17 @@ export default function Navbar() {
   return (
     <header className="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-50 transition-all duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between py-3 md:py-4">
+        <div className="flex items-center justify-between py-3 md:py-4 min-h-[80px]">
 
           {/* ── Logo ── */}
           <button
             onClick={() => handleNav('#home')}
-            className="group relative flex items-center justify-start transition-opacity hover:opacity-80 duration-300 w-48 h-14 md:w-[280px] md:h-20 overflow-hidden mix-blend-multiply"
+            className="group flex items-center justify-start transition-opacity hover:opacity-80 duration-300 shrink-0"
           >
             <img 
               src="/images/amk-ads-logo-v2.png" 
               alt="AMK ADS Logo" 
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] md:w-[130%] max-w-none object-contain" 
+              className="h-14 md:h-20 max-h-[80px] w-auto object-contain shrink-0" 
             />
           </button>
 
