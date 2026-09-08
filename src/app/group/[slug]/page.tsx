@@ -9,6 +9,7 @@ export function generateStaticParams() {
   ]
 }
 
-export default function DivisionGalleryPage({ params }: { params: { slug: string } }) {
-  return <DivisionGallery slug={params.slug} />
+export default async function DivisionGalleryPage({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params;
+  return <DivisionGallery slug={resolvedParams.slug} />
 }
