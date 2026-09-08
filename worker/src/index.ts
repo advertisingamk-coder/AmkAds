@@ -1,6 +1,7 @@
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { SignJWT, jwtVerify } from 'jose'
+import { Resend } from 'resend'
 
 type Bindings = {
   DB: D1Database
@@ -67,27 +68,21 @@ app.post('/api/contact', async (c) => {
 
     if (c.env.RESEND_API_KEY) {
       const apiKey = c.env.RESEND_API_KEY.trim()
-      const resendResponse = await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          from: 'onboarding@resend.dev',
-          to: receiverEmail,
-          subject: `New Lead: ${name} (${company || 'General Inquiry'})`,
-          html: htmlBody,
-        }),
+      const resend = new Resend(apiKey)
+      
+      const { data, error } = await resend.emails.send({
+        from: 'AMK Ads <onboarding@resend.dev>',
+        to: [receiverEmail],
+        reply_to: email,
+        subject: `New Lead: ${name} (${company || 'General Inquiry'})`,
+        html: htmlBody,
       })
 
-      if (!resendResponse.ok) {
-        const errorData = await resendResponse.json()
-        return c.json({ success: false, error: errorData }, 400)
+      if (error) {
+        return c.json({ success: false, error }, 400)
       }
       
-      const successData = await resendResponse.json()
-      return c.json({ success: true, data: successData }, 200)
+      return c.json({ success: true, data }, 200)
     } else {
       return c.json({ success: false, error: "Server Configuration Error: Missing API Key" }, 500)
     }
