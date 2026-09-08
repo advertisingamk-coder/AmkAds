@@ -27,7 +27,7 @@ const socials = [
   { icon: Twitter,   href: '#', label: 'Twitter'   },
   { icon: Linkedin,  href: 'https://www.linkedin.com/in/amk-ads-761791434/?isSelfProfile=true', label: 'LinkedIn'  },
   { icon: Instagram, href: '#', label: 'Instagram' },
-  { icon: Facebook,  href: '#', label: 'Facebook'  },
+  { icon: Facebook,  href: 'https://www.facebook.com/profile.php?id=61594000205292', label: 'Facebook'  },
   { icon: Youtube,   href: '#', label: 'YouTube'   },
 ]
 
