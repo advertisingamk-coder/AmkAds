@@ -10,7 +10,6 @@ const navLinks = [
   { label: 'Portfolio', href: '#portfolio' },
   { label: 'Group',     href: '#group' },
   { label: 'Contact',   href: '#contact' },
-  { label: 'Admin',     href: '/admin/portfolio' },
 ]
 
 export default function Navbar() {

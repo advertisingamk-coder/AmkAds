@@ -1,5 +1,4 @@
 import { Hono } from 'hono'
-import { cors } from 'hono/cors'
 import { SignJWT, jwtVerify } from 'jose'
 import { Resend } from 'resend'
 
@@ -12,16 +11,39 @@ type Bindings = {
   ENVIRONMENT?: string
   RESEND_API_KEY?: string
   CONTACT_RECEIVER_EMAIL?: string
+  // Comma-separated list of allowed origins for the admin panel
+  // e.g. "https://admin.amkadvertising.com,https://amkads-admin.pages.dev"
+  ADMIN_ORIGIN?: string
 }
 
 const app = new Hono<{ Bindings: Bindings }>()
 
 // CORS Middleware
-app.use('*', cors({
-  origin: (origin) => origin || '*',
-  credentials: true,
-  allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-}))
+// Reads allowed origins from the ADMIN_ORIGIN env var (set in Cloudflare dashboard).
+// Falls back to a permissive wildcard for local dev when env var is absent.
+app.use('*', async (c, next) => {
+  const origin = c.req.header('Origin') || ''
+  const allowedOriginsRaw = c.env.ADMIN_ORIGIN || ''
+  const allowedOrigins = allowedOriginsRaw
+    ? allowedOriginsRaw.split(',').map(o => o.trim())
+    : []
+
+  // Determine which origin to echo back (or '*' for dev)
+  const effectiveOrigin =
+    allowedOrigins.length === 0
+      ? (origin || '*')
+      : (allowedOrigins.includes(origin) ? origin : allowedOrigins[0])
+
+  c.header('Access-Control-Allow-Origin', effectiveOrigin)
+  c.header('Access-Control-Allow-Credentials', 'true')
+  c.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+  c.header('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+
+  if (c.req.method === 'OPTIONS') {
+    return new Response(null, { status: 204, headers: c.res.headers })
+  }
+  await next()
+})
 
 // Authentication Middleware
 const authMiddleware = async (c: any, next: any) => {
@@ -124,6 +146,13 @@ app.post('/api/admin/login', async (c) => {
 app.post('/api/admin/logout', async (c) => {
   c.header('Set-Cookie', 'admin_session=; HttpOnly; Path=/; Max-Age=0; SameSite=None; Secure')
   return c.json({ success: true })
+})
+
+// Session check — used by the standalone Admin Panel's ProtectedRoute component.
+// The client calls this with credentials:'include'; if the HttpOnly cookie is valid
+// the worker returns 200, otherwise 401, never exposing the JWT to JS.
+app.get('/api/admin/me', authMiddleware, async (c) => {
+  return c.json({ authenticated: true })
 })
 
 // Get Portfolio
