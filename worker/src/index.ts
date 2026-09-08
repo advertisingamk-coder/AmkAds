@@ -66,16 +66,16 @@ app.post('/api/contact', async (c) => {
     `
 
     if (c.env.RESEND_API_KEY) {
+      const apiKey = c.env.RESEND_API_KEY.trim()
       const resendResponse = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${c.env.RESEND_API_KEY}`,
+          'Authorization': `Bearer ${apiKey}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: 'AmkAds Inquiry <onboarding@resend.dev>',
-          to: [receiverEmail],
-          reply_to: email,
+          from: 'onboarding@resend.dev',
+          to: receiverEmail,
           subject: `New Lead: ${name} (${company || 'General Inquiry'})`,
           html: htmlBody,
         }),
