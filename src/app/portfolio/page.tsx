@@ -23,12 +23,7 @@ export default function PortfolioPage() {
             Back to Home
           </Link>
           
-          <a 
-            href="/admin/portfolio" 
-            className="inline-flex items-center text-sm font-semibold text-brand-orange hover:text-brand-orange transition-colors px-4 py-2 border border-brand-orange/30 rounded-lg hover:bg-brand-orange/10"
-          >
-            Admin Panel
-          </a>
+
         </div>
       </nav>
 
