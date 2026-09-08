@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import {
-  Layers, Bus, Monitor, Plane, ShoppingBag,
+  Globe, Brush, Calendar, Briefcase,
   UploadCloud, Trash2, Video, Loader2,
 } from 'lucide-react'
 import toast from 'react-hot-toast'
@@ -14,11 +14,10 @@ type ServiceCard = {
 }
 
 const SERVICES: ServiceCard[] = [
-  { title: 'Billboard Advertising',     slug: 'billboard-advertising',     icon: Layers },
-  { title: 'Transit & Transport Media', slug: 'transit-transport-media',   icon: Bus },
-  { title: 'Digital OOH (DOOH)',         slug: 'digital-ooh',              icon: Monitor },
-  { title: 'Airport Media',              slug: 'airport-media',            icon: Plane },
-  { title: 'Mall & Retail Media',        slug: 'mall-retail-media',        icon: ShoppingBag },
+  { title: 'Digital Marketing',    slug: 'digital-marketing',  icon: Globe },
+  { title: 'Creative Agency',      slug: 'creative-agency',    icon: Brush },
+  { title: 'Event Management',     slug: 'event-management',   icon: Calendar },
+  { title: 'Corporate Services',   slug: 'corporate-services', icon: Briefcase },
 ]
 
 export default function ServiceVideosPage() {
@@ -98,10 +97,10 @@ export default function ServiceVideosPage() {
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-2xl md:text-3xl font-bold text-white font-outfit mb-1">
-          Service Videos
+          Ecosystem Videos
         </h1>
         <p className="text-slate-400 text-sm">
-          Manage modal videos for your Full-Spectrum OOH Services.
+          Manage modal videos for The AmkAds Ecosystem (One Group. Every Solution.)
         </p>
       </div>
 

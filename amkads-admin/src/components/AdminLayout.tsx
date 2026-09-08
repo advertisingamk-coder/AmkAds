@@ -20,7 +20,7 @@ const navItems = [
   {
     to: '/dashboard/service-videos',
     icon: Video,
-    label: 'Service Videos',
+    label: 'Ecosystem Videos',
     end: false,
   },
 ]

@@ -1,8 +1,9 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Globe, Brush, Calendar, Briefcase, ArrowRight, Layers } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { Globe, Brush, Calendar, Briefcase, ArrowRight, Layers, PlayCircle, X } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const ecosystem = [
   {
@@ -61,6 +62,24 @@ const itemVariants = {
 }
 
 export default function GroupSection() {
+  const [videoMap, setVideoMap] = useState<Record<string, string>>({})
+  const [activeVideo, setActiveVideo] = useState<string | null>(null)
+
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://amkads.advertisingamk.workers.dev"}/api/service-videos`)
+        if (res.ok) {
+          const data = await res.json()
+          setVideoMap(data)
+        }
+      } catch (e) {
+        console.error("Failed to fetch videos", e)
+      }
+    }
+    fetchVideos()
+  }, [])
+
   return (
     <section id="group" className="relative py-24 bg-brand-greyLight overflow-hidden">
       <div className="glow-orb w-[500px] h-[500px] bg-brand-orange/8 bottom-0 right-0 pointer-events-none" />
@@ -152,21 +171,70 @@ export default function GroupSection() {
                     ))}
                   </div>
 
-                  <Link
-                    href={`/group/${item.slug}`}
-                    className={`flex items-center gap-1.5 text-sm font-semibold transition-all duration-200 group/btn ${
-                      item.color === 'blue' ? 'text-brand-orange' : 'text-brand-orange'
-                    }`}
-                  >
-                    Explore Gallery
-                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-200" />
-                  </Link>
+                  <div className="flex items-center gap-6">
+                    <Link
+                      href={`/group/${item.slug}`}
+                      className={`flex items-center gap-1.5 text-sm font-semibold transition-all duration-200 group/btn ${
+                        item.color === 'blue' ? 'text-brand-orange' : 'text-brand-orange'
+                      }`}
+                    >
+                      Explore Gallery
+                      <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-200" />
+                    </Link>
+
+                    {videoMap[item.slug] && (
+                      <button
+                        onClick={() => setActiveVideo(videoMap[item.slug])}
+                        className={`flex items-center gap-1.5 text-sm font-semibold transition-all duration-200 hover:opacity-80 ${
+                          item.color === 'blue' ? 'text-brand-orange' : 'text-brand-orange'
+                        }`}
+                      >
+                        <PlayCircle className="w-4 h-4" />
+                        Watch Video
+                      </button>
+                    )}
+                  </div>
                 </div>
               </motion.div>
             )
           })}
         </motion.div>
       </div>
+
+      <AnimatePresence>
+        {activeVideo && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+            onClick={() => setActiveVideo(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-5xl bg-black rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+            >
+              <button
+                onClick={() => setActiveVideo(null)}
+                className="absolute top-4 right-4 z-10 p-2 bg-black/50 hover:bg-black text-white rounded-full transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+              <div className="aspect-video w-full bg-black">
+                <video
+                  src={activeVideo}
+                  controls
+                  autoPlay
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }
