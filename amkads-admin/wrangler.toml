@@ -1,0 +1,2 @@
+name = "amkads-admin"
+pages_build_output_dir = "dist"
