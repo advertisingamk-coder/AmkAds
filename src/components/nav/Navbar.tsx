@@ -39,9 +39,9 @@ export default function Navbar() {
             className="group flex items-center justify-start transition-opacity hover:opacity-80 duration-300 shrink-0"
           >
             <img 
-              src="/images/amk-ads-logo-v2.png" 
+              src="/images/amk-ads-logo-final.png" 
               alt="AMK ADS Logo" 
-              className="h-14 md:h-20 max-h-[80px] w-auto object-contain shrink-0" 
+              className="h-12 md:h-16 w-auto object-contain shrink-0" 
             />
           </button>
 
