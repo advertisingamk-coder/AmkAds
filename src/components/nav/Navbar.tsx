@@ -31,14 +31,14 @@ export default function Navbar() {
   return (
     <header className="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-50 transition-all duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-18 py-4">
+        <div className="flex items-center justify-between py-3 md:py-4">
 
           {/* ── Logo ── */}
           <button
             onClick={() => handleNav('#home')}
             className="group flex items-center justify-center transition-opacity hover:opacity-80 duration-300"
           >
-            <img src="/images/amk-ads-logo-final.png" alt="AMK ADS Logo" className="h-10 md:h-12 w-auto object-contain" />
+            <img src="/images/amk-ads-logo-final.png" alt="AMK ADS Logo" className="h-14 md:h-20 w-auto object-contain" />
           </button>
 
           {/* ── Desktop Nav ── */}
