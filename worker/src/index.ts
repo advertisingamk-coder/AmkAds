@@ -73,7 +73,7 @@ app.post('/api/contact', async (c) => {
       const { data, error } = await resend.emails.send({
         from: 'AMK Ads <onboarding@resend.dev>',
         to: [receiverEmail],
-        reply_to: email,
+        replyTo: email,
         subject: `New Lead: ${name} (${company || 'General Inquiry'})`,
         html: htmlBody,
       })
