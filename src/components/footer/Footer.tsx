@@ -18,7 +18,7 @@ const quickLinks = {
   ],
   Contact: [
     { label: '0339-192-0339', href: 'tel:03391920339' },
-    { label: 'amk.ads2020@gmail.com', href: 'mailto:amk.ads2020@gmail.com' },
+    { label: 'info@amkadvertising.com', href: 'mailto:info@amkadvertising.com' },
     { label: 'Building No. 39, Wocland Society, Opposite Al-Fateh, Pine Avenue Road, Lahore, Pakistan.', href: '#' },
   ],
 }
@@ -33,7 +33,7 @@ const socials = [
 
 const contactDetails = [
   { icon: Phone,  text: '0339-192-0339',  href: 'tel:03391920339' },
-  { icon: Mail,   text: 'amk.ads2020@gmail.com',  href: 'mailto:amk.ads2020@gmail.com' },
+  { icon: Mail,   text: 'info@amkadvertising.com',  href: 'mailto:info@amkadvertising.com' },
   { icon: MapPin, text: 'Building No. 39, Wocland Society, Opposite Al-Fateh, Pine Avenue Road, Lahore, Pakistan.', href: '#' },
 ]
 

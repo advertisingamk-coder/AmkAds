@@ -7,7 +7,7 @@ import toast from 'react-hot-toast'
 
 const contactInfo = [
   { icon: Phone, label: 'Call Us',      value: '0339-192-0339',    href: 'tel:03391920339' },
-  { icon: Mail,  label: 'Email Us',     value: 'amk.ads2020@gmail.com',   href: 'mailto:amk.ads2020@gmail.com' },
+  { icon: Mail,  label: 'Email Us',     value: 'info@amkadvertising.com',   href: 'mailto:info@amkadvertising.com' },
   { icon: MapPin, label: 'Head Office', value: 'Building No. 39, Wocland Society, Opposite Al-Fateh, Pine Avenue Road, Lahore, Pakistan.',  href: '#' },
 ]
 
