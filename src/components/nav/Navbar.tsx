@@ -30,23 +30,22 @@ export default function Navbar() {
 
   return (
     <header className="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-50 transition-all duration-500">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between py-2 md:py-3 min-h-[90px]">
+      <div className="max-w-7xl mx-auto flex w-full items-center justify-between px-6 py-4 min-h-[100px]">
 
           {/* ── Logo ── */}
           <button
             onClick={() => handleNav('#home')}
-            className="group flex items-center justify-start transition-opacity hover:opacity-80 duration-300 shrink-0"
+            className="block shrink-0 transition-opacity hover:opacity-80 duration-300"
           >
             <img 
               src="/images/amk-ads-logo-v2.png" 
               alt="AMK ADS Logo" 
-              className="w-[180px] md:w-[240px] lg:w-[280px] h-auto object-contain shrink-0" 
+              className="w-[220px] md:w-[280px] h-auto object-contain" 
             />
           </button>
 
           {/* ── Desktop Nav ── */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => {
               const isActive = activeLink === link.href.replace('#', '')
               return (
@@ -64,7 +63,7 @@ export default function Navbar() {
           </nav>
 
           {/* ── CTA Button ── */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-3 shrink-0">
             <button
               onClick={() => handleNav('#contact')}
               className="bg-gradient-to-r from-brand-orange to-orange-600 text-white font-medium shadow-md rounded-lg text-sm px-5 py-2.5 flex items-center gap-1.5 transition-all hover:opacity-90"
@@ -82,7 +81,6 @@ export default function Navbar() {
           >
             {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
-        </div>
       </div>
 
       {/* ── Mobile Drawer ── */}
