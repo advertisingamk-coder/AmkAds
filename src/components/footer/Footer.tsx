@@ -151,7 +151,7 @@ export default function Footer() {
         {/* ── Bottom Bar ── */}
         <div className="border-t border-slate-200 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-xs">
-            © {year} AMK ADS. All rights reserved.
+            © <span suppressHydrationWarning>{year}</span> AMK ADS. All rights reserved.
           </p>
           <div className="flex items-center gap-6 text-slate-500 text-xs">
             <a href="#" className="hover:text-slate-800 transition-colors">Privacy Policy</a>
