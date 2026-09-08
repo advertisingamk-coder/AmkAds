@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Lock, User, Loader2, ShieldCheck, Eye, EyeOff } from 'lucide-react'
 import toast from 'react-hot-toast'
 
-const API_URL = import.meta.env.VITE_API_URL || ''
+const API_URL = import.meta.env.VITE_API_URL || 'https://amkads.advertisingamk.workers.dev'
 
 /**
  * LoginPage

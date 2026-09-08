@@ -3,7 +3,7 @@ import { Navigate, Outlet } from 'react-router-dom'
 import { Loader2 } from 'lucide-react'
 import AdminLayout from './AdminLayout'
 
-const API_URL = import.meta.env.VITE_API_URL || ''
+const API_URL = import.meta.env.VITE_API_URL || 'https://amkads.advertisingamk.workers.dev'
 
 type AuthState = 'loading' | 'authenticated' | 'unauthenticated'
 

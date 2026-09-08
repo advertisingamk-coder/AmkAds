@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Plus, Trash2, X, UploadCloud, Loader2, Play, Image as ImageIcon } from 'lucide-react'
 import toast from 'react-hot-toast'
 
-const API_URL = import.meta.env.VITE_API_URL || ''
+const API_URL = import.meta.env.VITE_API_URL || 'https://amkads.advertisingamk.workers.dev'
 
 type MediaItem = {
   id: number
