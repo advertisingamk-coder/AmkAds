@@ -159,10 +159,13 @@ app.get('/api/admin/me', authMiddleware, async (c) => {
 app.get('/api/portfolio', async (c) => {
   try {
     const { results } = await c.env.DB.prepare(
-      "SELECT * FROM PortfolioMedia ORDER BY displayOrder DESC, created_at DESC"
+      "SELECT * FROM PortfolioMedia ORDER BY displayOrder DESC"
     ).all()
     return c.json(results)
   } catch (err: any) {
+    if (err.message && err.message.includes('no such table')) {
+      return c.json([])
+    }
     return c.json({ error: err.message }, 500)
   }
 })
