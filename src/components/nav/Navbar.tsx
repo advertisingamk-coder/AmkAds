@@ -31,7 +31,7 @@ export default function Navbar() {
   return (
     <header className="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-50 transition-all duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between py-3 md:py-4 min-h-[80px]">
+        <div className="flex items-center justify-between py-2 md:py-3 min-h-[80px] md:min-h-[96px]">
 
           {/* ── Logo ── */}
           <button
@@ -39,9 +39,9 @@ export default function Navbar() {
             className="group flex items-center justify-start transition-opacity hover:opacity-80 duration-300 shrink-0"
           >
             <img 
-              src="/images/amk-ads-logo-final.png" 
+              src="/images/amk-ads-logo-v2.png" 
               alt="AMK ADS Logo" 
-              className="h-12 md:h-16 w-auto object-contain shrink-0" 
+              className="h-14 md:h-16 lg:h-20 w-auto object-contain shrink-0" 
             />
           </button>
 
