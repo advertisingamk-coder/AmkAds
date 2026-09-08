@@ -30,7 +30,7 @@ export default function Navbar() {
 
   return (
     <header className="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-50 transition-all duration-500">
-      <div className="max-w-7xl mx-auto flex w-full items-center justify-between px-6 py-4 min-h-[100px]">
+      <div className="max-w-7xl mx-auto flex w-full items-center justify-between px-6 py-2 min-h-[80px]">
 
           {/* ── Logo ── */}
           <button
@@ -40,7 +40,7 @@ export default function Navbar() {
             <img 
               src="/images/amk-ads-logo-v2.png" 
               alt="AMK ADS Logo" 
-              className="w-[220px] md:w-[280px] h-auto object-contain" 
+              className="max-h-[80px] w-auto object-contain" 
             />
           </button>
 
