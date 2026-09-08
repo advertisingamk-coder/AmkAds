@@ -27,7 +27,7 @@ export default function PortfolioGallery() {
   useEffect(() => {
     const fetchPortfolio = async () => {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ""}/api/portfolio`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://amkads.advertisingamk.workers.dev"}/api/portfolio`);
         if (res.ok) {
           const data = await res.json();
           setItems(data as PortfolioMediaType[]);

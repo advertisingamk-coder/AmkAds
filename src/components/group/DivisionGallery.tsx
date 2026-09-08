@@ -52,7 +52,7 @@ export default function DivisionGallery({ slug }: { slug: string }) {
   useEffect(() => {
     if (!info) return;
 
-    fetch(`${process.env.NEXT_PUBLIC_API_URL || ""}/api/division-media/${slug}`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://amkads.advertisingamk.workers.dev"}/api/division-media/${slug}`)
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) setMedia(data)
